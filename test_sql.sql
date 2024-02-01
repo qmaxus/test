@@ -27,7 +27,7 @@ select
 	SUM(total) OVER (Partition BY acc ORDER BY acc, dt_from) AS balance
 from(
 	SELECT
-		CASE a WHEN 1 THEN from ELSE to END  acc,
+		CASE a WHEN 1 THEN "from" ELSE "to" END  acc,
 		tdate dt_from ,
 		CASE a WHEN 1 THEN -amount ELSE amount END   as total
 	FROM transfers, (SELECT 1 a UNION ALL SELECT 2) B
