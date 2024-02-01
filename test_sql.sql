@@ -23,7 +23,7 @@ select id, name, sales_c, row_number() over (order by sales_c) sales_rank_c, sal
 select
 	acc ,
 	dt_from,
-	LEAD(dt_from,1,'01.01.3000') OVER (Partition BY acc ORDER BY acc, dt_from) AS dt_to,
+	LEAD(dt_from,1,'3000.01.01') OVER (Partition BY acc ORDER BY acc, dt_from) AS dt_to,
 	SUM(total) OVER (Partition BY acc ORDER BY acc, dt_from) AS balance
 from(
 	SELECT
